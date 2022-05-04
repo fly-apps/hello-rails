@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:experimental
-ARG RUBY_VERSION=2.7.3
+ARG RUBY_VERSION=3.1.0
 ARG VARIANT=jemalloc-slim
 FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
 
@@ -32,7 +32,7 @@ ENV BASH_ENV ~/.bashrc
 ENV VOLTA_HOME /root/.volta
 ENV PATH $VOLTA_HOME/bin:$PATH
 
-RUN volta install node@${NODE_VERSION} && volta install yarn@${YARN_VERSION}
+RUN volta install node@${NODE_VERSION} && volta install yarn --verbose
 
 FROM base as build
 
